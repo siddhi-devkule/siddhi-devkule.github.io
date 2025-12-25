@@ -1,29 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Siddhi Devkule</title>
-        <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Siddhi Devkule</title>
+    <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #e2e8c0;
+            color: #000;
+            font-family: 'Playfair Display', serif;
+            padding: 50px 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #d9e0b5;
+            padding: 0 80px;
+            height: 100px;
+            margin: -50px -80px 0 -80px;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .header-brand { display: flex; align-items: center; gap: 15px; }
+        .pixel-avatar { width: 120px; height: auto; mix-blend-mode: multiply; image-rendering: pixelated; transform: translate(-30px); }
+        .header-year { font-size: 1.3rem; transform: translateX(-40px); }
+
+        nav { display: flex; gap: 60px; align-items: center; }
+        .nav-link { text-decoration: none; color: #000; font-size: 1.2rem; display: flex; align-items: center; }
+
+        /* --- CONTENT --- */
+        main { flex-grow: 1; display: flex; flex-direction: column; }
+        .hero-text { margin-top: 130px; }
+        .greeting { font-size: 4.3rem; line-height: 1.1; font-weight: 400; }
+        
+        .name { 
+            font-size: 5.5rem; 
+            font-weight: 800; 
+            line-height: 0.6; 
+            letter-spacing: -2px; 
+            margin-top: 20px; 
+        }
+
+        .sub-info { 
+            align-self: flex-end; 
+            text-align: right; 
+            font-size: 1.5rem; 
+            line-height: 1.4; 
+            position: relative; 
+            top: 70px; 
+        }
+
+        .portfolio-link { text-decoration: none; color: #000; }
+        .cool-stuff { 
+            font-family: 'Homemade Apple', cursive; 
+            font-size: 1.5rem; 
+            margin-top: 15px; 
+            position: relative; 
+            display: inline-block;
+        }
+        .cool-stuff::after {
+            content: ""; position: absolute; bottom: 5px; left: 0; width: 100%; height: 12px;
+            background-color: rgba(209, 67, 67, 0.2); z-index: -1;
+        }
+
+        /* --- MOBILE FIXES --- */
+        @media (max-width: 768px) {
+            body { padding: 25px; }
+            header { 
+                padding: 0 20px; 
+                margin: -25px -25px 0 -25px; 
+                height: 80px; 
+            }
+            .pixel-avatar { width: 70px; transform: translate(0); }
+            .header-year { display: none; }
+            nav { gap: 15px; }
+            .nav-link { font-size: 1rem; }
+            .nav-link svg { width: 20px; height: 20px; }
+
+            .hero-text { margin-top: 60px; }
+            .greeting { font-size: 2.8rem; }
+            
+            .name { 
+                font-size: 3.5rem; 
+                line-height: 1.1 !important; /* Forces the overlap to stop */
+                margin-top: 10px;
+                display: block;
+            }
+
+            .sub-info { 
+                align-self: flex-start; 
+                text-align: left; 
+                top: 40px; 
+                font-size: 1.1rem; 
+            }
+        }
+    </style>
+</head>
 <body>
 
     <header>
         <div class="header-brand">
-            <img src="avatar.png" alt="Pixel Avatar" class="pixel-avatar">
+            <img src="avatar.png" alt="Avatar" class="pixel-avatar">
             <span class="header-year">2026 ©</span>
         </div>
         <nav>
-            <a href="index.html" class="nav-link",fill="#000000">Home</a>
-            <a href="cv.html" class="nav-link" target="_blank",fill="#000000">CV</a>
-            
-            <a href="https://www.linkedin.com/in/siddhidevkule" class="nav-link social-icon" target="_blank" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#000000"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="cv.html" class="nav-link">CV</a>
+            <a href="https://www.linkedin.com/in/siddhidevkule" class="nav-link" target="_blank">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
             </a>
-
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=devkulesiddhi808@gmail.com" class="nav-link social-icon"  target="_blank" aria-label="Email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#000000"> <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l12-9.725v15.438h-24v-15.438l12 9.725z"/></svg>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=devkulesiddhi808@gmail.com" class="nav-link" target="_blank">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l12-9.725v15.438h-24v-15.438l12 9.725z"/></svg>
             </a>
         </nav>
     </header>
@@ -32,14 +131,14 @@
         <div class="hero-text">
             <div class="greeting">Hello,</div>
             <div class="greeting">I’m</div>
-            <h1 class="name">Siddhi Devkule.</h1>
+            <h1 class="name">Siddhi<br>Devkule</h1>
         </div>
 
         <div class="sub-info">
             <p>Undergrad Student</p>
             <p>@Bombay College of Pharmacy</p>
             <a href="portfolio.html" class="portfolio-link">
-                <p class="cool-stuff">+ | make cool stuff</p>
+                <p class="cool-stuff">+ I make cool stuff</p>
             </a>
         </div>
     </main>
