@@ -1,0 +1,175 @@
+/* --- RESET AND BASE STYLES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e2e8c0; 
+  color: #000000;            
+  font-family: 'Playfair Display', serif;
+  padding: 50px 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; 
+}
+
+/* --- HEADER AND NAV BAR --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9e0b5; 
+  padding: 0 80px; 
+  height: 100px;
+  margin-top: -50px; 
+  margin-left: -80px;
+  margin-right: -80px;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.pixel-avatar {
+  width: 120px !important;
+  height: auto !important;
+  mix-blend-mode: multiply; 
+  transform: translate(-30px);
+  image-rendering: pixelated; 
+  cursor: pointer;
+}
+
+.header-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  transform: translateX(-40px);
+  color: #000000;
+}
+
+nav { display: flex; gap: 80px; }
+
+.nav-link {
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color:#000000;
+}
+
+.nav-link:hover {
+  opacity: 0.7;
+  transition: 0.3s;
+}
+
+/* --- MAIN CONTENT AREA --- */
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-text {
+  margin-top: 130px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting {
+  font-size: 4.3rem; 
+  line-height: 1.1; 
+  font-weight: 400;
+}
+
+.name {
+  font-size: 5.5rem; 
+  font-weight: 800;
+  line-height: 0.6;
+  letter-spacing: -2px;
+  margin-top: 20px; 
+}
+
+.sub-info {
+  align-self: flex-end;
+  text-align: right;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  position: relative; 
+  top: 70px; 
+}
+
+/* --- FAST ANIMATED PERMANENT HIGHLIGHT --- */
+.portfolio-link {
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cool-stuff {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 1.5rem;
+  color: #000000;
+  margin-top: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.portfolio-link span {
+  color: #d14343;
+}
+
+/* The Animated Highlight Stroke */
+.portfolio-link::before {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: -2%;
+  width: 104%;
+  height: 15px;
+  background-color: rgba(209, 67, 67, 0.25); 
+  z-index: 1;
+  transform-origin: left;
+  /* Drawing effect starts first, then frequent pulse begins */
+  animation: drawHighlight 1s ease-out forwards, frequentPulse 1.5s infinite ease-in-out 1s;
+}
+
+@keyframes drawHighlight {
+  0% { transform: scaleX(0) rotate(-1deg); }
+  100% { transform: scaleX(1) rotate(-1deg); }
+}
+
+@keyframes frequentPulse {
+  0%, 100% { 
+      transform: scaleX(1) rotate(-1deg); 
+      opacity: 0.5; 
+  }
+  50% { 
+      transform: scaleX(1.08) rotate(-2deg); 
+      opacity: 0.9; 
+  }
+}
+
+.portfolio-link:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+.portfolio-link:active {
+  transform: translateY(2px) scale(0.97);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  body { padding: 30px; }
+  header { padding: 0 30px; margin-left: -30px; margin-right: -30px; }
+  .hero-text { margin-top: 60px; }
+  .greeting { font-size: 2.9rem; }
+  .name { font-size: 3.5rem; }
+  .sub-info { top: 50px; font-size: 1.1rem; }
+}
