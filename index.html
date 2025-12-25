@@ -1,48 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Siddhi Devkule</title>
-        <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
-<body>
+/* --- RESET AND BASE STYLES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    <header>
-        <div class="header-brand">
-            <img src="avatar.png" alt="Pixel Avatar" class="pixel-avatar">
-            <span class="header-year">2026 ©</span>
-        </div>
-        <nav>
-            <a href="index.html" class="nav-link",fill="#000000">Home</a>
-            <a href="cv.html" class="nav-link" target="_blank",fill="#000000">CV</a>
-            
-            <a href="https://www.linkedin.com/in/siddhidevkule" class="nav-link social-icon" target="_blank" aria-label="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#000000"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
+body {
+  background-color: #e2e8c0; 
+  color: #000000;            
+  font-family: 'Playfair Display', serif;
+  padding: 50px 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* This prevents the "wobble" and horizontal scrolling on phones */
+  overflow-x: hidden !important; 
+  width: 100vw;
+}
 
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=devkulesiddhi808@gmail.com" class="nav-link social-icon"  target="_blank" aria-label="Email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#000000"> <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l12-9.725v15.438h-24v-15.438l12 9.725z"/></svg>
-            </a>
-        </nav>
-    </header>
+/* --- HEADER AND NAV BAR --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9e0b5; 
+  padding: 0 80px; 
+  height: 100px;
+  margin-top: -50px; 
+  margin-left: -80px;
+  margin-right: -80px;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  width: auto;
+}
 
-    <main>
-        <div class="hero-text">
-            <div class="greeting">Hello,</div>
-            <div class="greeting">I’m</div>
-            <h1 class="name">Siddhi Devkule.</h1>
-        </div>
+.header-brand { display: flex; align-items: center; gap: 15px; }
 
-        <div class="sub-info">
-            <p>Undergrad Student</p>
-            <p>@Bombay College of Pharmacy</p>
-            <a href="portfolio.html" class="portfolio-link">
-                <p class="cool-stuff">+ | make cool stuff</p>
-            </a>
-        </div>
-    </main>
+.pixel-avatar {
+  width: 120px !important;
+  height: auto !important;
+  mix-blend-mode: multiply; 
+  transform: translate(-30px);
+  image-rendering: pixelated; 
+  cursor: pointer;
+}
 
-</body>
-</html>
+.header-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  transform: translateX(-40px);
+}
+
+nav { display: flex; gap: 80px; }
+
+.nav-link {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color:#000000;
+}
+
+/* --- MAIN CONTENT AREA --- */
+.hero-text {
+  margin-top: 130px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting { font-size: 4.3rem; line-height: 1.1; }
+
+.name {
+  font-size: 5.5rem; 
+  font-weight: 800;
+  line-height: 0.6; /* Looks great on desktop, bad on mobile */
+  letter-spacing: -2px;
+  margin-top: 20px; 
+}
+
+.sub-info {
+  align-self: flex-end;
+  text-align: right;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  position: relative; 
+  top: 70px; 
+}
+
+/* --- THE FIX: FORCING MOBILE TO BEHAVE --- */
+@media (max-width: 768px) {
+  body { 
+    padding: 20px !important; 
+  }
+
+  header { 
+    padding: 0 20px !important; 
+    /* This resets the -80px margins that were pushing your logo off-screen */
+    margin: -20px -20px 0 -20px !important; 
+    height: 80px !important;
+    width: calc(100% + 40px) !important;
+  }
+
+  .pixel-avatar {
+    width: 60px !important; 
+    transform: translate(0) !important; /* Moves avatar back into view */
+  }
+
+  .header-year { display: none !important; }
+
+  nav { gap: 15px !important; }
+
+  .nav-link { font-size: 1rem !important; }
+
+  .hero-text { margin-top: 50px !important; }
+
+  .greeting { 
+    font-size: 2.2rem !important; 
+    line-height: 1.2 !important;
+  }
+
+  .name { 
+    font-size: 3.2rem !important; 
+    line-height: 1.1 !important; /* Forces the wrap to be readable */
+    margin-top: 10px !important;
+  }
+
+  .sub-info { 
+    align-self: flex-start !important; 
+    text-align: left !important;
+    top: 30px !important; 
+    font-size: 1.1rem !important;
+    width: 100% !important;
+  }
+}
